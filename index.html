@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Task</title>
+</head>
+<body>
+    <script src="task.js"></script>
+    <script src="TaskManager.js"></script>
+    <script>
+        
+        // const myTask = new Task(1, "Dire bonjour", 1000, () => {
+        //     console.log("Bonjour !");
+        // });
+
+        // myTask.run();
+        const manager = new TaskManager();
+
+        // Exemple de tâche asynchrone
+        const task1 = new Task(1, "Lire un fichier", 2000, async () => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("Fichier lu avec succès !");
+                }, 1500);  // Simuler un délai
+            });
+        });
+
+        const task2 = new Task(2, "Faire une requête HTTP", 3000, async () => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("Requête réussie !");
+                }, 2000);
+            });
+        });
+        
+        manager.addTask(task1);
+        manager.addTask(task2);
+        manager.runAll();
+    </script>
+</body>
+</html>
